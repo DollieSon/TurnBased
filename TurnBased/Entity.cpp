@@ -52,12 +52,14 @@ public:
 
 // Actual Functions
 	// To be overidden by Player Class
+	/*
 	void printLevel() {
 		cout << "Level : " << Level << endl;
 	}
+	*/
 	void printStats(){
 		cout << "-*-*- " << name << " -*-*-" << endl;
-		printLevel();
+		//printLevel();
 		cout << "Health :" << CurHealth << "/" << MaxHealth << endl;
 		cout << "Mana : " << CurMana << "/" << MaxMana << endl;
 		cout << "Power : " << Power << endl;
@@ -78,8 +80,10 @@ public:
 		Exp = 0;
 		ExpThreshold = 10 * this->Level;
 	}
+	/*
 	void printLevel() {
 		EntityParent::printLevel();
 		cout << "Level : " << Level << "(" <<Exp << "/" << ExpThreshold << ")" << endl;
 	}
+	*/
 };
