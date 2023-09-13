@@ -1,31 +1,20 @@
 #include "Entity.h"
 
 
-Entity :: Entity() {
-protected:
-	string name;
-	int MaxHealth;
-	int CurHealth;
-	int Power;
-	int MaxMana;
-	int CurMana;
-	int Armor;
-	int Level;
+Entity::Entity(string name, int Health, int Mana, int Power, int Armor, int Level) {
+	this->name = name;
+	MaxHealth = Health;
+	CurHealth = MaxHealth;
+	MaxMana = Mana;
+	CurMana = MaxMana;
+	this->Power = Power;
+	this->Armor = Armor;
+	this->Level = Level;
+	cout << "EntityParent Created" << endl;
+}
 
-public:
-	Entity(string name, int Health, int Mana, int Power, int Armor, int Level) {
-		this->name = name;
-		MaxHealth = Health;
-		CurHealth = MaxHealth;
-		MaxMana = Mana;
-		CurMana = MaxMana;
-		this->Power = Power;
-		this->Armor = Armor;
-		this->Level = Level;
-		cout << "EntityParent Created" << endl;
-	}
 	//Setters and Resetters
-	int reduceHealth(int damage) {
+int Entity :: reduceHealth(int damage) {
 		CurHealth -= damage;
 		if (CurHealth > 0) {
 
@@ -33,18 +22,19 @@ public:
 		}
 		return -1;
 	}
-	bool resetHealth() {
+bool Entity :: resetHealth() {
 		CurHealth = MaxHealth;
 		return true;
 	}
-	int reduceMana(int amount) {
+
+int Entity :: reduceMana(int amount) {
 		CurMana -= amount;
 		if (CurMana > 0) {
 			return CurMana;
 		}
 		return -1;
 	}
-	bool resetMana() {
+bool Entity :: resetMana() {
 		CurMana = MaxMana;
 		return true;
 	}
@@ -52,11 +42,11 @@ public:
 	// Actual Functions
 		// To be overidden by Player Class
 
-	void printLevel() {
+void Entity :: printLevel() {
 		cout << "Level : " << Level << endl;
 	}
 
-	void printStats() {
+void Entity :: printStats() {
 		cout << "-*-*- " << name << " -*-*-" << endl;
 		printLevel();
 		cout << "Health :" << CurHealth << "/" << MaxHealth << endl;
@@ -65,25 +55,18 @@ public:
 		cout << "Armor : " << Armor << endl;
 
 	}
-};
 
-class Player : public Entity {
-protected:
-	int Money;
-	int Exp;
-	int ExpThreshold;
-public:
-	Player(string name, int Health, int Mana, int Power, int Armor, int Level, int Money) : Entity(name, Health, Mana, Power, Armor, Level) {
+
+Player :: Player(string name, int Health, int Mana, int Power, int Armor, int Level, int Money) : Entity(name, Health, Mana, Power, Armor, Level) {
 		cout << "--Player Model" << endl;
 		this->Money = Money;
 		Exp = 0;
 		ExpThreshold = 10 * this->Level;
 	}
 
-	void printLevel() {
+void Player :: printLevel() {
 		Entity::printLevel();
 		cout << "Level : " << Level << "(" << Exp << "/" << ExpThreshold << ")" << endl;
 	}
 
-};
 
