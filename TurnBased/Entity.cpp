@@ -1,8 +1,7 @@
-#include <iostream>
-#include <string>
-using namespace std;
+#include "Entity.h"
 
-class EntityParent{
+
+Entity :: Entity() {
 protected:
 	string name;
 	int MaxHealth;
@@ -14,7 +13,7 @@ protected:
 	int Level;
 
 public:
-	EntityParent(string name, int Health, int Mana, int Power, int Armor, int Level) {
+	Entity(string name, int Health, int Mana, int Power, int Armor, int Level) {
 		this->name = name;
 		MaxHealth = Health;
 		CurHealth = MaxHealth;
@@ -25,14 +24,14 @@ public:
 		this->Level = Level;
 		cout << "EntityParent Created" << endl;
 	}
-//Setters and Resetters
-	int reduceHealth( int damage) {
+	//Setters and Resetters
+	int reduceHealth(int damage) {
 		CurHealth -= damage;
 		if (CurHealth > 0) {
-			
+
 			return CurHealth;
 		}
-		return - 1;
+		return -1;
 	}
 	bool resetHealth() {
 		CurHealth = MaxHealth;
@@ -50,40 +49,41 @@ public:
 		return true;
 	}
 
-// Actual Functions
-	// To be overidden by Player Class
-	
+	// Actual Functions
+		// To be overidden by Player Class
+
 	void printLevel() {
 		cout << "Level : " << Level << endl;
 	}
-	
-	void printStats(){
+
+	void printStats() {
 		cout << "-*-*- " << name << " -*-*-" << endl;
 		printLevel();
 		cout << "Health :" << CurHealth << "/" << MaxHealth << endl;
 		cout << "Mana : " << CurMana << "/" << MaxMana << endl;
 		cout << "Power : " << Power << endl;
 		cout << "Armor : " << Armor << endl;
-		
+
 	}
 };
 
-class PlayerEntity : public EntityParent {
+class Player : public Entity {
 protected:
 	int Money;
 	int Exp;
 	int ExpThreshold;
 public:
-	PlayerEntity(string name, int Health, int Mana, int Power, int Armor, int Level,int Money) : EntityParent(name,Health,Mana,Power,Armor,Level) {
+	Player(string name, int Health, int Mana, int Power, int Armor, int Level, int Money) : Entity(name, Health, Mana, Power, Armor, Level) {
 		cout << "--Player Model" << endl;
 		this->Money = Money;
 		Exp = 0;
 		ExpThreshold = 10 * this->Level;
 	}
-	
+
 	void printLevel() {
-		EntityParent::printLevel();
-		cout << "Level : " << Level << "(" <<Exp << "/" << ExpThreshold << ")" << endl;
+		Entity::printLevel();
+		cout << "Level : " << Level << "(" << Exp << "/" << ExpThreshold << ")" << endl;
 	}
-	
+
 };
+
