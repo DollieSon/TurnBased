@@ -1,8 +1,7 @@
-#include "Characters.cpp"
+#include "Entity.cpp"
 #include <iostream>
 
 int main()
 {
-	Human* Ray = new Human;
-	Ray->hello();
+
 }
