@@ -10,7 +10,7 @@ Entity::Entity(string name, int Health, int Mana, int Power, int Armor, int Leve
 	this->Power = Power;
 	this->Armor = Armor;
 	this->Level = Level;
-	cout << "EntityParent Created" << endl;
+	//cout << "EntityParent Created" << endl;
 }
 
 	//Setters and Resetters
@@ -44,7 +44,7 @@ bool Entity :: resetMana() {
 
 void Entity :: printLevel() {
 		cout << "Level : " << Level << endl;
-	}
+}
 
 void Entity :: printStats() {
 		cout << "-*-*- " << name << " -*-*-" << endl;
@@ -54,11 +54,27 @@ void Entity :: printStats() {
 		cout << "Power : " << Power << endl;
 		cout << "Armor : " << Armor << endl;
 
-	}
+}
 
+string Entity::GetName() {
+	return name;
+}
+
+bool Entity::isAlive() {
+	if (CurHealth > 0) {
+		return 1;
+	}
+	return 0;
+}
+
+int Entity::getPower() {
+	return Power;
+}
+
+// Player Class
 
 Player :: Player(string name, int Health, int Mana, int Power, int Armor, int Level, int Money) : Entity(name, Health, Mana, Power, Armor, Level) {
-		cout << "--Player Model" << endl;
+		//cout << "--Player Model" << endl;
 		this->Money = Money;
 		Exp = 0;
 		ExpThreshold = 10 * this->Level;
@@ -70,3 +86,8 @@ void Player :: printLevel() {
 	}
 
 
+// Enemy Class
+
+Enemy::Enemy(string name, int Health, int Mana, int Power, int Armor, int Level, int GoldDrop) : Entity(name, Health, Mana, Power, Armor, Level) {
+	MoneyReward = GoldDrop;
+}

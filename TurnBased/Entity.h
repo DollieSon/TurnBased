@@ -23,6 +23,9 @@ public:
 	bool resetMana();
 	void printLevel();
 	void printStats();
+	string GetName();
+	bool isAlive();
+	int getPower();
 };
 
 class Player : public Entity {
@@ -35,5 +38,10 @@ public:
 	void printLevel();
 };
 
-
+class Enemy : public Entity{
+protected:
+	int MoneyReward;
+public:
+	Enemy(string name, int Health, int Mana, int Power, int Armor, int Level, int GoldDrop);
+};
 #endif // !ENTITY
