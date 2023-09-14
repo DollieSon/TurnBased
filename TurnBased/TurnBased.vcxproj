@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AttackPattern.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Fight.cpp" />
     <ClCompile Include="TurnBased.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AttackPattern.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Fight.h" />
     <ClInclude Include="Testing.h" />

@@ -14,6 +14,7 @@ void Fight(Player* MainChar, Enemy* Opponent) {
 		tempdamage = Opponent->getPower();
 		damage_taken += tempdamage;
 		MainChar->reduceHealth(tempdamage);
+		turns += 1;
 	}
 	if (MainChar->isAlive()) {
 		cout << MainChar->GetName() << " Won!!" << endl;
@@ -21,6 +22,6 @@ void Fight(Player* MainChar, Enemy* Opponent) {
 	else {
 		cout << Opponent->GetName() << " Won!!" << endl;
 	}
-	cout << "Damage dealt :" << total_damage << endl;
-	cout << "Damage taken :" << damage_taken << endl;
+	cout << "Damage dealt :" << total_damage  << "/" << (double) total_damage / turns  << " Per turn" << endl;
+	cout << "Damage taken :" << damage_taken << "/" << (double) damage_taken / turns << " Per Turn" << endl;
 }
