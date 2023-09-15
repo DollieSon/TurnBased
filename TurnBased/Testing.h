@@ -1,3 +1,5 @@
+#pragma once
+#include "Item.h"
 #include "Entity.h"
 #include "Fight.h"
 #include "AttackPattern.h"

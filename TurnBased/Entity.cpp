@@ -2,6 +2,7 @@
 
 
 Entity::Entity(string name, int Health, int Mana, int Power, int Armor, int Level) {
+	Weapon = NULL;
 	this->name = name;
 	MaxHealth = Health;
 	CurHealth = MaxHealth;
@@ -70,6 +71,18 @@ bool Entity::isAlive() {
 int Entity::getPower() {
 	return Power;
 }
+
+bool Entity::equip(Item* item) {
+	MaxHealth += item->gHealth();
+	MaxMana += item->gMana();
+	Power += item->gPower();
+}
+bool Entity::unequip(Item* item) {
+	MaxHealth -= item->gHealth();
+	MaxMana -= item->gMana();
+	Power -= item->gPower();
+}
+
 
 // Player Class
 

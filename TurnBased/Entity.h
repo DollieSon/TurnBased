@@ -1,5 +1,7 @@
+#pragma once
 #include <iostream>
 #include <string>
+#include "Item.h"
 #ifndef ENTITY
 #define ENTITY
 
@@ -15,6 +17,9 @@ protected:
 	int CurMana;
 	int Armor;
 	int Level;
+	// to be changed into an equipment class
+	Item* Weapon;
+	// implement AttackPatternNode
 public:
 	Entity(string name, int Health, int Mana, int Power, int Armor, int Level);
 	int reduceHealth(int damage);
@@ -26,7 +31,11 @@ public:
 	string GetName();
 	bool isAlive();
 	int getPower();
-};
+	// To be reimplemented
+	bool equip(Item* item);
+	bool unequip(Item* item);
+}; 
+
 
 class Player : public Entity {
 protected:

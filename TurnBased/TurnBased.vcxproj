@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -130,12 +130,16 @@
     <ClCompile Include="AttackPattern.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Fight.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Statuses.cpp" />
     <ClCompile Include="TurnBased.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AttackPattern.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Fight.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Statuses.h" />
     <ClInclude Include="Testing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
