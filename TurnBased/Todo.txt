@@ -1,0 +1,14 @@
+// overtime thing
+Statuses{
+	Bleed
+	Poison
+	Healing
+	LowerAttack
+	LowerMana
+	LowerHealth
+}
+WeaponEffect{
+	Burning
+	Bleeding
+	Mutli-Attack
+}
