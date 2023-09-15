@@ -16,6 +16,6 @@ public:
 	int gHealth();
 	int gMana();
 	int gPower();
-
+	string gName();
 };
 

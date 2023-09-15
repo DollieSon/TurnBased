@@ -1,14 +1,23 @@
 // overtime thing
 Statuses{
-	Bleed
-	Poison
-	Healing
-	LowerAttack
-	LowerMana
-	LowerHealth
-}
+	0 Bleed // damaging
+		-- Never Disappears but has a cap(.5 of Max Health);
+	1 Poison // damaging
+		-- Unlimited but halves every use;
+	2 Healing // negative damaging
+		-- Has a cap and halves;
+	3 LowerAttack // lower stat
+	4 LowerMana // lower stat
+	5 LowerHealth // lower stat
+} 6 total
 WeaponEffect{
 	Burning
 	Bleeding
-	Mutli-Attack
-}
+	Mutli-Attack //
+	Lifesteal
+	Thorns
+	Healing
+	DecreaseAttack
+	DecreaseMana
+	DecreaseHealth
+} 9 total

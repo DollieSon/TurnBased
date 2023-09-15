@@ -15,3 +15,7 @@ int Item::gMana() {
 int Item::gPower() {
 	return BonusPower;
 }
+
+string Item::gName() {
+	return name;
+}

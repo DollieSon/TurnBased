@@ -11,17 +11,14 @@ Entity::Entity(string name, int Health, int Mana, int Power, int Armor, int Leve
 	this->Power = Power;
 	this->Armor = Armor;
 	this->Level = Level;
+	statuses.resize(6);
 	//cout << "EntityParent Created" << endl;
 }
 
 	//Setters and Resetters
 int Entity :: reduceHealth(int damage) {
 		CurHealth -= damage;
-		if (CurHealth > 0) {
-
-			return CurHealth;
-		}
-		return -1;
+		return (CurHealth < 0) ? CurHealth + damage : damage;
 	}
 bool Entity :: resetHealth() {
 		CurHealth = MaxHealth;
@@ -30,10 +27,7 @@ bool Entity :: resetHealth() {
 
 int Entity :: reduceMana(int amount) {
 		CurMana -= amount;
-		if (CurMana > 0) {
-			return CurMana;
-		}
-		return -1;
+		return (CurMana < 0) ? CurMana + amount : amount;
 	}
 bool Entity :: resetMana() {
 		CurMana = MaxMana;
@@ -73,16 +67,73 @@ int Entity::getPower() {
 }
 
 bool Entity::equip(Item* item) {
+	cout <<"Equiped: " << item->gName() << endl;
 	MaxHealth += item->gHealth();
 	MaxMana += item->gMana();
 	Power += item->gPower();
+	return 1;
 }
 bool Entity::unequip(Item* item) {
+	cout << "Unequiped: " << item->gName() << endl;
 	MaxHealth -= item->gHealth();
 	MaxMana -= item->gMana();
 	Power -= item->gPower();
+	return 1;
 }
 
+void Entity::resetstats() {
+	resetHealth();
+	resetMana();
+}
+
+
+void Entity::setStatus(int index, int number) {
+	statuses[index] = number;
+}
+void Entity::addStatus(int index, int number){
+	statuses[index] += number;
+}
+//
+//1 Bleed // damaging
+//2 Poison // damaging
+//3 Healing // negative damaging
+//4 LowerAttack // lower stat
+//5 LowerMana // lower stat
+//6 LowerHealth // lower stat
+int Entity::HealingStatuses() {
+	// Check Heal
+	int HealedAmt =0;
+	if (statuses[2] > 0) {
+		//debug
+		cout << name << " Healed : " << statuses[2] << endl;
+
+		CurHealth += statuses[2];
+		HealedAmt += statuses[2];
+		statuses[2] /= 2;
+	}
+	return HealedAmt;
+}
+int Entity::DamageByStatus() {
+	//Check Bleed
+	int DamageDealt = 0;
+	if (statuses[0] > 0) {
+
+		cout << name << " Bled : " << statuses[0] << endl;
+
+		DamageDealt += statuses[0];
+		CurHealth -= statuses[0];
+	}
+	if (statuses[1] > 0) {
+
+		cout << name << " poisoned : " << statuses[1] << endl;
+
+		DamageDealt += statuses[1];
+		CurHealth -= statuses[1];
+		statuses[1] /= 2;
+		statuses[1] -= 1;
+	}
+	return DamageDealt;
+}
 
 // Player Class
 

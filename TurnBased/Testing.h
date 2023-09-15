@@ -3,10 +3,7 @@
 #include "Entity.h"
 #include "Fight.h"
 #include "AttackPattern.h"
-namespace Testing {
-	void TestPrintStats();
-}
-
+#include "Item.h"
 void TestPrintStats() {
 	Player* MainCharacter = new Player("Ray", 20, 10, 2, 5, 1, 100);
 	Entity* Enemy = new Entity("Goblin", 5, 1, 1, 5, 1);
@@ -18,7 +15,10 @@ void TestPrintStats() {
 
 void TestFighting() {
 	Player* MainCharacter = new Player("Ray", 20, 10, 2, 5, 1, 100);
-	Enemy* Globlin = new Enemy("Goblin", 12, 13, 3, 6, 1, 21);
+	MainCharacter->addStatus(2, 10);
+	Enemy* Globlin = new Enemy("Goblin", 40, 13, 3, 6, 1, 21);
+	Globlin->addStatus(0, 10);
+	Globlin->addStatus(1, 20);
 	Fight(MainCharacter,Globlin);
 	delete MainCharacter;
 	delete Globlin;
@@ -46,4 +46,14 @@ void TestAttackPattern() {
 	Number1->popAllNode(Globlin4);
 	Number1->printAllNode();
 
+}
+
+void TestWeapon() {
+	Player* MainCharacter = new Player("Ray", 20, 10, 2, 5, 1, 100);
+	Enemy* Globlin = new Enemy("Goblin", 12, 13, 3, 6, 1, 21);
+	Item* dagger = new Item("Dagger", 0, 0, 1);
+	Item* spiked_shield = new Item("Spiked Shield", 5, 0, 2);
+	MainCharacter->equip(spiked_shield);
+	Globlin->equip(dagger);
+	Fight(MainCharacter, Globlin);
 }

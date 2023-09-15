@@ -1,11 +1,12 @@
 #pragma once
-class StatusEffects{
+#include "Entity.h"
+//
+//Bleed // damaging
+//Poison // damaging
+//Healing // negative damaging
+//LowerAttack // lower stat
+//LowerMana // lower stat
+//LowerHealth // lower stat
 
-};
-
-class WeaponEffects {
-	int BleedEffectLevel;
-public:
-	int gBleedLevel();
-};
-
+void HealingStatuses(Entity* Person);
+void DamageByStatus(Entity* Person);
