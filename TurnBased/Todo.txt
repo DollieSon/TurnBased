@@ -1,23 +1,38 @@
-// overtime thing
-Statuses{
-	0 Bleed // damaging
-		-- Never Disappears but has a cap(.5 of Max Health);
-	1 Poison // damaging
-		-- Unlimited but halves every use;
-	2 Healing // negative damaging
-		-- Has a cap and halves;
-	3 LowerAttack // lower stat
-	4 LowerMana // lower stat
-	5 LowerHealth // lower stat
-} 6 total
-WeaponEffect{
-	Burning
-	Bleeding
-	Mutli-Attack //
-	Lifesteal
-	Thorns
-	Healing
-	DecreaseAttack
-	DecreaseMana
-	DecreaseHealth
-} 9 total
+{ "Statuses and Weapon Status Effects"
+	// overtime thing
+	Statuses{
+		0 Bleed // damaging
+			-- Never Disappears but has a cap(.5 of Max Health);
+		1 Poison // damaging
+			-- Unlimited but halves every use;
+		2 Healing // negative damaging
+			-- Has a cap and halves;
+		3 LowerAttack // lower stat
+		4 LowerMana // lower stat
+		5 LowerHealth // lower stat
+	} 6 total
+	WeaponEffect{
+		0 Bleeding
+		1 Poison
+		2 Healing // With Wea
+		3 DecreaseAttack
+		4 DecreaseMana
+		5 DecreaseHealth
+
+		6 Mutli-Attack //
+
+		7 Lifesteal
+
+		8 Thorns
+
+	
+	} 9 total
+
+} "Done But Needs Reimplimentation"
+
+{ "Stage and Stage Generation"
+	To implement
+	-Unique Stage ID's
+
+
+} "Todo"

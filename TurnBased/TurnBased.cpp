@@ -3,5 +3,5 @@
 #include "Fight.h"
 int main()
 {
-	TestFighting();
+	TestWeapon();
 }

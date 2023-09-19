@@ -54,6 +54,8 @@ void TestWeapon() {
 	Item* dagger = new Item("Dagger", 0, 0, 1);
 	Item* spiked_shield = new Item("Spiked Shield", 5, 0, 2);
 	MainCharacter->equip(spiked_shield);
+	MainCharacter->Weapon->setWeaponEffect(1,10);
+	MainCharacter->Weapon->printEffects();
 	Globlin->equip(dagger);
-	Fight(MainCharacter, Globlin);
+	//Fight(MainCharacter, Globlin);
 }

@@ -71,6 +71,8 @@ bool Entity::equip(Item* item) {
 	MaxHealth += item->gHealth();
 	MaxMana += item->gMana();
 	Power += item->gPower();
+	// turn to be dynamic
+	Weapon = item;
 	return 1;
 }
 bool Entity::unequip(Item* item) {
@@ -78,6 +80,8 @@ bool Entity::unequip(Item* item) {
 	MaxHealth -= item->gHealth();
 	MaxMana -= item->gMana();
 	Power -= item->gPower();
+	//Remove To be more dynamic
+	Weapon = NULL;
 	return 1;
 }
 
@@ -135,6 +139,14 @@ int Entity::DamageByStatus() {
 	return DamageDealt;
 }
 
+
+void Entity::ApplyStatusByWeapon(Item* weapon) {
+	for (int x = 0; x < 6; x++) {
+		if (x == 2) continue;
+		statuses[x] += weapon->gEffecLevel(x);
+	}
+}
+
 // Player Class
 
 Player :: Player(string name, int Health, int Mana, int Power, int Armor, int Level, int Money) : Entity(name, Health, Mana, Power, Armor, Level) {
@@ -155,3 +167,4 @@ void Player :: printLevel() {
 Enemy::Enemy(string name, int Health, int Mana, int Power, int Armor, int Level, int GoldDrop) : Entity(name, Health, Mana, Power, Armor, Level) {
 	MoneyReward = GoldDrop;
 }
+

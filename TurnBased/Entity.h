@@ -18,12 +18,14 @@ protected:
 	int CurMana;
 	int Armor;
 	int Level;
-	// to be changed into an equipment class
-	Item* Weapon;
 	// implement AttackPatternNode
 	
 	//Statuses Should be dynamic, currently sized 6
 	vector<int> statuses;
+
+public:
+	// to be changed into an equipment class
+	Item* Weapon;
 public:
 	Entity(string name, int Health, int Mana, int Power, int Armor, int Level);
 	int reduceHealth(int damage);
@@ -42,6 +44,7 @@ public:
 	void addStatus(int index, int number);
 	int HealingStatuses();
 	int DamageByStatus();
+	void ApplyStatusByWeapon(Item* weapon);
 }; 
 
 
