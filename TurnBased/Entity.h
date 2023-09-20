@@ -47,7 +47,6 @@ public:
 	void ApplyStatusByWeapon(Item* weapon);
 }; 
 
-
 class Player : public Entity {
 protected:
 	int Money;

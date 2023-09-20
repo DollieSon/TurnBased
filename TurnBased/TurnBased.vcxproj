@@ -131,6 +131,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Fight.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Stages.cpp" />
     <ClCompile Include="Statuses.cpp" />
     <ClCompile Include="TurnBased.cpp" />
   </ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Fight.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Stages.h" />
     <ClInclude Include="Statuses.h" />
     <ClInclude Include="Testing.h" />
   </ItemGroup>

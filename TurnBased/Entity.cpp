@@ -147,6 +147,9 @@ void Entity::ApplyStatusByWeapon(Item* weapon) {
 	}
 }
 
+
+
+
 // Player Class
 
 Player :: Player(string name, int Health, int Mana, int Power, int Armor, int Level, int Money) : Entity(name, Health, Mana, Power, Armor, Level) {

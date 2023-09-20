@@ -33,6 +33,9 @@
     <ClCompile Include="Statuses.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Stages.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Testing.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Statuses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

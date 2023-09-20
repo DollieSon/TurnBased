@@ -4,6 +4,9 @@
 #include "Fight.h"
 #include "AttackPattern.h"
 #include "Item.h"
+#include <iostream>
+#include <random>
+#include "Stages.h"
 void TestPrintStats() {
 	Player* MainCharacter = new Player("Ray", 20, 10, 2, 5, 1, 100);
 	Entity* Enemy = new Entity("Goblin", 5, 1, 1, 5, 1);
@@ -58,4 +61,33 @@ void TestWeapon() {
 	MainCharacter->Weapon->printEffects();
 	Globlin->equip(dagger);
 	//Fight(MainCharacter, Globlin);
+}
+void TestRandom(int upper, int lower) {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<int> YesNo(upper, lower);
+	int num;
+	int biggest=lower;
+	int smallest=upper;
+	cout << "Random Number :";
+	for (int x = 0; x < lower*(lower/3); x++) {
+		num = YesNo(gen);
+		cout << num << " ";
+		biggest = num > biggest ? num : biggest;
+		smallest = num < smallest ? num : smallest;
+	}
+	cout << endl << "Smallest : " << smallest << endl;
+	cout << "Biggest : " << biggest << endl;
+
+}
+void TestGeneration(int row,int col) {
+	Stages* Level1 = new Stages(row,col);
+	//GenerateStages(vector<Entity*> Entities, vector<Item*> items);
+	Enemy* Globlin = new Enemy("Goblin", 40, 13, 3, 6, 1, 21);
+	vector<Entity*> Enemies = { Globlin };
+	Item* dagger = new Item("Dagger", 0, 0, 1);
+	Item* spiked_shield = new Item("Spiked Shield", 5, 0, 2);
+	vector<Item*> LootPool = { dagger,spiked_shield };
+	Level1->GenerateStages(Enemies, LootPool);
+	Level1->printStages();
 }
