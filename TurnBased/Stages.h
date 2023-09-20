@@ -13,8 +13,9 @@ struct StageNode
 	StageNode* Side;
 	
 	StageNode() {
-
+		StageID = "";
 	}
+
 };
 
 

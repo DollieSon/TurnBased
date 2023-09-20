@@ -23,10 +23,12 @@ Stages::Stages(int col, int row) {
 	this->col = col;
 	this->row = row;
 	StageList.resize(col * row);
+
 };
 
 void Stages::GenerateStages(vector<Entity*> Entities, vector<Item*> items) {
 	random_device rd;
+	Item* noneItem;
 	mt19937 gen(rd());
 	uniform_int_distribution<int> YesNo(0, 1);
 	uniform_int_distribution<int> RandEnt(0, Entities.size()-1);
@@ -43,20 +45,24 @@ void Stages::GenerateStages(vector<Entity*> Entities, vector<Item*> items) {
 		for (int y = 0; y < col; y++) {
 			//generate item and enemy
 			if (YesNo(gen) == 1) ChosenItem = items[RandItem(gen)];
+			else {
+				noneItem = new Item("None", 0, 0, 0);
+				ChosenItem = noneItem;
+			}
 			ChosenEnem = Entities[RandEnt(gen)];
 
 			index = x + (y * col);
-			TempStage = CreateStage(to_string(x)+","+to_string(y),ChosenEnem,ChosenItem);
+			TempStage = CreateStage("Row:"+to_string(x) + ", Col:" + to_string(y), ChosenEnem, ChosenItem);
 			StageList[index] = TempStage;
 			
 		}
 		//Connect Stages
 		if (x < 1) continue;
 		for (int y = 0; y < col; y++) {
-			index = (x - 1) * (y * col);
+			index = (x - 1) + (y * col);
 			index2 = x + (y * col);
 			StageList[index]->Next = StageList[index2];
-			index2 = (x - 1) * (RandStage(gen) * col);
+			index2 = (x) + (RandStage(gen) * col);
 			StageList[index]->Side = StageList[index2];
 		}
 	}
@@ -72,7 +78,7 @@ void Stages::printStages() {
 		Lines.push_back(StageList[index]->StageID);
 		Lines.push_back(StageList[index]->Enemy->GetName());
 		Lines.push_back(StageList[index]->reward->gName());
-		Lines.push_back(StageList[index]->Next->StageID + "," + StageList[index]->Side->StageID);
+		Lines.push_back("Next: " + StageList[index]->Next->StageID + "|" + "Side:" + StageList[index]->Side->StageID);
 	}
 	//build on base
 	for(int y = 0; y < col; y++) {

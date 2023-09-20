@@ -8,9 +8,6 @@ Item::Item(string name,int Health, int Mana, int Power) {
 	BonusMana = Mana;
 	BonusPower = Power;
 	WeaponEffects.resize(EFFECTNUM);
-	cout << "Size: " << WeaponEffects.size() << endl;
-
-
 	/*
 	for (int x = 0; x < WeaponEffects.size();x++) {
 		x = -1;
