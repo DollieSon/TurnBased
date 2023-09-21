@@ -3,12 +3,21 @@
 #include "Fight.h"
 int main()
 {
-	TestGeneration(3,3);
-	cout << endl << endl;
+	//
+	/*int col = 6;
+	int row = 3;
+	int num;
+	for (int x = 0; x < row; x++) {
+		for (int y = 0; y < col; y++) {
+			num = y + (x * (col));
+			cout << num << " ";
+		}
+		cout << endl;
+	}*/
 	
 	TestGeneration(6, 3);
-	/*cout << endl << endl;
+	cout << endl << endl;
 	TestGeneration(3, 10);
-	cout << endl << endl;*/
+	cout << endl << endl;
 }
 	
