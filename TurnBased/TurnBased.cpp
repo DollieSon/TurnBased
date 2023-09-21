@@ -4,8 +4,8 @@
 int main()
 {
 	//
-	/*int col = 6;
-	int row = 3;
+	int col = 3;
+	int row = 10;
 	int num;
 	for (int x = 0; x < row; x++) {
 		for (int y = 0; y < col; y++) {
@@ -13,7 +13,7 @@ int main()
 			cout << num << " ";
 		}
 		cout << endl;
-	}*/
+	}
 	
 	TestGeneration(6, 3);
 	cout << endl << endl;

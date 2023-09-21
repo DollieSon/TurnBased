@@ -33,7 +33,7 @@ void Stages::GenerateStages(vector<Entity*> Entities, vector<Item*> items) {
 	uniform_int_distribution<int> YesNo(0, 1);
 	uniform_int_distribution<int> RandEnt(0, Entities.size()-1);
 	uniform_int_distribution<int> RandItem(0, items.size()-1);
-	uniform_int_distribution<int> RandStage(0, row - 1);
+	uniform_int_distribution<int> RandStage(0, col - 1);
 	Entity* ChosenEnem = nullptr;
 	Item* ChosenItem = nullptr;
 	StageNode* TempStage = nullptr;
@@ -60,10 +60,11 @@ void Stages::GenerateStages(vector<Entity*> Entities, vector<Item*> items) {
 		//Connect Stages
 		if (x < 1) continue;
 		for (int y = 0; y < col; y++) {
+			int rand = RandStage(gen);
 			index = (y) + ((x-1) * col);
 			index2 = y + (x * col);
 			StageList[index]->Next = StageList[index2];
-			index2 = (RandStage(gen)) + (x * col);
+			index2 = (rand) + (x * col);
 			StageList[index]->Side = StageList[index2];
 		}
 	}
