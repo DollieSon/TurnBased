@@ -20,7 +20,10 @@ struct StageNode
 
 
 class Stages
-{
+{\
+private:
+	int GetLongest(vector<string>* lines);
+	void insertSpace(int spaces, vector<string>* lines);
 protected:
 	vector<StageNode*> StageList;
 	int row;

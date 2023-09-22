@@ -44,6 +44,7 @@ void Stages::GenerateStages(vector<Entity*> Entities, vector<Item*> items) {
 		//genrate Stages
 		for (int y = 0; y < col; y++) {
 			//generate item and enemy
+			//should duplicate and not get refecnce (Needs Rework)
 			if (YesNo(gen) == 1) ChosenItem = items[RandItem(gen)];
 			else {
 				noneItem = new Item("None", 0, 0, 0);
@@ -70,11 +71,16 @@ void Stages::GenerateStages(vector<Entity*> Entities, vector<Item*> items) {
 	}
 };
 void Stages::printStages() {
+	const int margin = 4;
 	vector<string> Lines;
+	vector<string> TempLines;
 	int index = -1;
 	int biggest = 0;
 	string stagename;
+	int space;
+
 	//get base
+	//Should Be ReCoded --Still Works
 	for (int x = 0; x < row; x++) {
 		index = x * col;
 		stagename = "N: End | S: End";
@@ -85,9 +91,33 @@ void Stages::printStages() {
 		if (StageList[index]->Next != nullptr) stagename = "N: " + StageList[index]->Next->StageID + "|" + "S:" + StageList[index]->Side->StageID;
 		Lines.push_back(stagename);
 	}
-	//build on base
-	for(int y = 0; y < col; y++) {
 
+	space = GetLongest(&Lines);
+	insertSpace(space+margin, &Lines);
+
+	//build on base
+	int lineIndex = 0;
+	for(int y = 0; y < col; y++) {
+		for (int x = 1; x < row; x++) {
+			//reset everything
+			lineIndex = 0;
+			index = (x * col) + y;
+			TempLines.resize(0);
+			stagename = "N: End | S: End";
+
+			// set on templine
+			TempLines.push_back(StageList[index]->StageID);
+			TempLines.push_back(StageList[index]->Enemy->GetName());
+			TempLines.push_back(StageList[index]->reward->gName());
+			if (StageList[index]->Next != nullptr) stagename = "N: " + StageList[index]->Next->StageID + "|" + "S:" + StageList[index]->Side->StageID;
+			TempLines.push_back(stagename);
+		}
+
+		space = GetLongest(&TempLines);
+		insertSpace(space + margin,&Lines);
+		for (int x = 0; x < TempLines.size(); x++) {
+			Lines[x] += TempLines[x];
+		}
 		
 	}
 	// print all Lines
@@ -95,3 +125,22 @@ void Stages::printStages() {
 		cout << Line << endl;
 	}
 };
+
+void Stages::insertSpace(int spaces, vector<string>* lines) {
+	string space(spaces, ' ');
+	int curLen;
+	for (int x = 0; x < lines->size(); x++) {
+		curLen = (lines + x)->size();
+		*(lines + x) + = space.substr(0, spaces - curLen);
+	}
+}
+
+int Stages::GetLongest(vector<string>* lines) {
+	int Big = -1;
+	int size;
+	for (string line : *lines) {
+		size = line.size();
+		Big = size > Big ? size : Big;
+	}
+	return Big;
+}
