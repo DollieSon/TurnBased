@@ -24,6 +24,7 @@ class Stages
 private:
 	int GetLongest(vector<string>* lines);
 	void insertSpace(int spaces, vector<string>* lines);
+	void insertSpace(int spaces, vector<string>* lines, vector<string>* Templines);
 protected:
 	vector<StageNode*> StageList;
 	int row;
